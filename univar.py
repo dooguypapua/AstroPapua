@@ -11,16 +11,40 @@
  ---------------------------------------------------
 '''
 import os
+import sys
 import glob
 import random
 import tempfile
 from colour import Color
 from time import time
 import inspect
+import subprocess
 from collections import OrderedDict
 from wonderwords import RandomWord
 import groot
 
+
+
+'''
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+                                          CONDA ENVIRONNEMENT                                            
+-------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------
+'''
+# Check AstroPapua Conda env
+requiredEnv = "AstroPapua"
+condaRoot = subprocess.check_output(["conda", "info", "--root"], universal_newlines=True).strip()
+runningEnv = os.path.basename(sys.prefix)
+if runningEnv != requiredEnv:
+    # Activate if required
+    print("Activate AstroPapua")
+    cmdActivate = f"source {condaRoot}/etc/profile.d/conda.sh && conda activate {requiredEnv}"
+    try:
+        subprocess.run(cmdActivate, shell=True, check=True, executable="/bin/bash")
+    except subprocess.CalledProcessError:
+        print(f"Unable to activate the '{requiredEnv}' environment. Make sure it is correctly configured.")
+        exit("\n")
 
 
 '''
