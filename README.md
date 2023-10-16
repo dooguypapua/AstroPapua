@@ -1,4 +1,4 @@
-![gemini logo](conf/gemini_icon.png)
+![astro space warriorlogo](conf/AstroPapua_whitebg.png)
 
 ```console
 python astropapua --help
